@@ -16,12 +16,17 @@ export default function App(): JSX.Element {
     const img: string = 'https://avatars.githubusercontent.com/u/89896025?v=4';
     const email: string = 'steventobar38@gmail.com';
     let name: string = 'Steve Tobar';
+    const emailTextColor: string = styles.emailText.color;
 
     const [username, setUsername] = useState<string>(name);
+    const [textColor, setTextColor] = useState<string>(emailTextColor);
 
     const onPress = (): void => {
         const newName: string = 'Geofrey Muñoz';
         setUsername(newName);
+
+        const newColor: string = styles.changeTextColor.color;
+        setTextColor(newColor);
     }
 
     return (
@@ -41,7 +46,7 @@ export default function App(): JSX.Element {
                 </View>
                 
                 <View style={styles.emailContainer}>
-                    <Text style={styles.emailText}>{email}</Text>
+                    <Text style={[styles.emailText, { color: textColor }]}>{email}</Text>
                 </View>
                 
                 <View style={styles.buttonContainer}>
@@ -105,6 +110,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#666666',
         textAlign: 'center',
+    },
+    changeTextColor: {
+        color: '#FF5733',
     },
     buttonContainer: {
         width: '100%',
